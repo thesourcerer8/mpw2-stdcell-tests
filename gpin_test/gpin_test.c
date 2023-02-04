@@ -51,6 +51,7 @@ void set_registers() {
 
 void main()
 {
+    int i;
     reg_gpio_mode1 = 1;
     reg_gpio_mode0 = 0;
     reg_gpio_ien = 1;
@@ -71,23 +72,11 @@ void main()
       int gpout=0x0; // Preparing the output value
       int gpouth=0x0;
       // Simulating Standard cell functions
-      reg_gpio_out=(gpin>>0)&1;
-
-      gpout |= ((((gpin>>0)&1) && ((gpin>>1)&1))<<2); // 0&1=2  AND2X1
-      gpout |= ((((gpin>>3)&1) && ((gpin>>4)&1))<<5); // 3&4=5  AND2X2
-      gpout |= ((1^(((gpin>>6)&1) && ((gpin>>7)&1) || ((gpin>>8)&1)))<<9); // !(6&7|8)=9 OAI21
-
-      gpout |= ((1^(((gpin>>10)&1) && ((gpin>>11)&1) || ((gpin>>12)&1) && ((gpin>>13)&1)))<<14); // !(6&7|8)=9 OAI22
-      gpout |= ((gpin>>15)&1)<<16; //15=16 BUF
-      gpout |= ((gpin>>17)&1)<<18; //17=18 BUF
-      gpout |= ((gpin>>19)&1)<<20; //19=20 BUF
-      gpout |= (1^((gpin>>21)&1))<<22; // INV
-      gpout |= (1^((gpin>>23)&1))<<24; // INV
-      gpout |= (1^((gpin>>25)&1))<<26; // INV
-      gpout |= (1^((gpin>>27)&1))<<28; // INV
-      gpout |= (1^((gpin>>29)&1))<<30; // INV
-      gpouth |= (((gpinh>>1)&1)?(gpin>>31)&1:(gpinh>>0)&1)<<2; // 33?31:32=34 MUX
-      gpouth |= ((1^(((gpinh>>3)&1) && ((gpinh>>4)&1)))<<5); // !35&36=37 NAND
+      for( i=0;i<32;i++)						      
+      {
+        gpin^=gpin>>i; // The big XOR
+      }
+      reg_gpio_out=gpin&1;
 
       reg_mprj_datal = gpout;
       reg_mprj_datah = gpouth;
