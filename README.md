@@ -20,12 +20,11 @@ The fake-test is simulating the standard cells in the userspace by Caravel firmw
 
 How to use these tests?
 This repository needs to be cloned in the firmware_vex directory of the caravel_board repository:
-
-`
+```
 git clone https://github.com/efabless/caravel_board
 cd caravel_board/firmware_vex
 git clone https://github.com/efabless/mpw2-stdcell-tests
 cd mpw2-stdcell-tests/gpin-tests
 cp ../../nucleo/gpio_config_def.py .
 make flash_nucleo
-`
+```
