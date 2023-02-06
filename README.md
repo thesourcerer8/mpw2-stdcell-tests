@@ -24,6 +24,10 @@ This repository needs to be cloned in the firmware_vex directory of the caravel_
 git clone https://github.com/efabless/caravel_board
 cd caravel_board/firmware_vex
 git clone https://github.com/thesourcerer8/mpw2-stdcell-tests
+cd nucleo
+make run PART=Cxy
+make get_config
+cd ..
 cd mpw2-stdcell-tests/gpin-tests
 cp ../../nucleo/gpio_config_def.py .
 make flash_nucleo
