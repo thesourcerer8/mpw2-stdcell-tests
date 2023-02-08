@@ -1,5 +1,7 @@
 # gpio_config_def.py file for part C4-6
-# io_config -- version 1.1.0
+# io_config -- version 1.2.0
+voltage = 1.60
+analog = False
 
 H_NONE        = 0  
 H_DEPENDENT   = 1  
@@ -7,12 +9,12 @@ H_INDEPENDENT = 2
 H_SPECIAL     = 3  
 H_UNKNOWN     = 4  
 
-# voltage: 1.7
-# configuration failed in gpio[3], anything after is invalid
+# voltage: 1.6
+# configuration failed in gpio[2], anything after is invalid
 gpio_l = [
-['IO[0]', H_INDEPENDENT],
-['IO[1]', H_INDEPENDENT],
-['IO[2]', H_DEPENDENT],
+['IO[0]', H_NONE],
+['IO[1]', H_DEPENDENT],
+['IO[2]', H_UNKNOWN],
 ['IO[3]', H_UNKNOWN],
 ['IO[4]', H_UNKNOWN],
 ['IO[5]', H_UNKNOWN],
@@ -30,10 +32,10 @@ gpio_l = [
 ['IO[17]', H_UNKNOWN],
 ['IO[18]', H_UNKNOWN],
 ]
-# voltage: 1.7
+# voltage: 1.6
 # IO configuration chain was successful
 gpio_h = [
-['IO[37]', H_INDEPENDENT],
+['IO[37]', H_NONE],
 ['IO[36]', H_DEPENDENT],
 ['IO[35]', H_INDEPENDENT],
 ['IO[34]', H_INDEPENDENT],
