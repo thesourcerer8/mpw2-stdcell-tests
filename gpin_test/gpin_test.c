@@ -66,12 +66,14 @@ void main()
 
     while(1)
     {
+/*
       int gpin=reg_mprj_datal; // Retrieving the GPIO values from the Input GPIOs
       int gpinh=reg_mprj_datah;
 
       int gpout=0x0; // Preparing the output value
       int gpouth=0x0;
-      // Simulating Standard cell functions
+      // Doing a big XOR over all the GPIO inputs
+      //
       for( i=0;i<32;i++)						      
       {
         gpin^=gpin>>i; // The big XOR
@@ -81,13 +83,12 @@ void main()
         gpin^=gpinh>>i; // The big XOR
       }
 
-      reg_gpio_out=gpin&1;
+      reg_gpio_out=1^(gpin&1);
+      */
+      reg_gpio_out=((i>>10)^reg_mprj_datal)&1;
+      i++;
 
-      reg_mprj_datal = gpout;
-      reg_mprj_datah = gpouth;
-
-      //reg_gpio_out=1;
-      //delay(5000000);
+      delay(50000);
 
 
     }

@@ -10,7 +10,7 @@ H_UNKNOWN     = 4
 # voltage: 1.7
 # configuration failed in gpio[3], anything after is invalid
 gpio_l = [
-['IO[0]', H_NONE],
+['IO[0]', H_INDEPENDENT],
 ['IO[1]', H_INDEPENDENT],
 ['IO[2]', H_DEPENDENT],
 ['IO[3]', H_UNKNOWN],
@@ -33,7 +33,7 @@ gpio_l = [
 # voltage: 1.7
 # IO configuration chain was successful
 gpio_h = [
-['IO[37]', H_NONE],
+['IO[37]', H_INDEPENDENT],
 ['IO[36]', H_DEPENDENT],
 ['IO[35]', H_INDEPENDENT],
 ['IO[34]', H_INDEPENDENT],
