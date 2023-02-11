@@ -43,8 +43,8 @@ config_l = [
     C_MGMT_IN,   #3
     C_MGMT_IN,   #4
     C_MGMT_OUT,   #5
-    C_MGMT_IN,   #6
-    C_MGMT_IN,   #7
+    C_MGMT_OUT,   #6
+    C_MGMT_OUT,   #7
     C_MGMT_IN,   #8
     C_MGMT_OUT,   #9
     C_MGMT_IN,   #10
