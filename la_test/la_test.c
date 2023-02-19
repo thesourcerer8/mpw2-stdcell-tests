@@ -12,6 +12,25 @@ void set_registers() {
 
 }
 
+bool get_la(int num)
+{
+  if(num<32) return ((reg_la0_data>>num)&1);
+  if(num<64) return ((reg_la1_data>>(num-32))&1);
+  if(num<96) return ((reg_la2_data>>(num-64))&1);
+  return ((reg_la3_data>>(num-96))&1);
+}
+void write_la(int num, bool value)
+{
+  if(num<32) reg_la0_data=reg_la0_data&(0xffffffff-(1<<num)) | (value<<num);
+  num-=32;
+  if(num<32) reg_la1_data=reg_la1_data&(0xffffffff-(1<<num)) | (value<<num);
+  num-=32;
+  if(num<32) reg_la2_data=reg_la2_data&(0xffffffff-(1<<num)) | (value<<num);
+  num-=32;
+  if(num<32) reg_la3_data=reg_la3_data&(0xffffffff-(1<<num)) | (value<<num);
+}
+
+
 void main()
 {
     int i;
@@ -41,9 +60,10 @@ void main()
  
       for(i='A'; i<='Z'; i++)
       {
+        //while(reg_uart_txfull==1)     
         reg_uart_data=i;
-        while(reg_uart_txfull==1) /* do nothing */ ;
         delay(5000);
+
       }
 
       //reg_gpio_out=1;
